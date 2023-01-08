@@ -3,5 +3,6 @@ from Blog.views import *
 
 
 urlpatterns = [
-    path('', index),    
+    path('', index), 
+    path('review/', blogForm, name="blogForm"),   
 ]

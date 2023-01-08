@@ -1,23 +1,41 @@
 from django.shortcuts import render
-from Accounts.forms import userForm
+from Accounts.forms import singupForm
 from Accounts.models import user
-
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
 
 # Create your views here.
-def singup (request):
+def signup (request):
+
+
     if request.method=="POST":
-        form=userForm(request.POST)
+        form=singupForm(request.POST)
         if form.is_valid():
-            info=form.cleaned_data
-            user_name=info["user_name"]
-            email=info["email"]
-            password=info["password"]
+            username=form.cleaned_data.get("username")
+            form.save()
+            return render (request, "singupSuccessful.html", {"message":f"El Usuario {username} ha sido registrado correctamente en la base de datos"})
+    else:
+        form=singupForm()
 
-            user_Form=user(user_name=user_name, email=email, password=password)
-            user_Form.save()
-            return render (request, "signupSuseccessful.html", {"message": "El usuario ha sido registrado correctamente" })
+    return render (request, "singupForm.html", {"form": form})
 
-    else: 
-        formulario=singup
-        
-    return render (request, "login.html")
+
+def login_request (request):
+    if request.method == "POST":
+        form=AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            us=form.cleaned_data.get("username")
+            pas=form.cleaned_data.get("password")
+            user=authenticate(username=us, password=pas)
+            if user is not None:
+                login(request, user)
+                return render (request, "loginsuccesful.html", {"mensaje": f"Bienvenido {user}"} )
+            else:
+                return render (request, "login.html",{"mensaje":"usuario o contraseña incorrecto","form":form})
+        else: 
+            return render (request, "login.html",{"mensaje":"usuario o contraseña incorrecto","form":form})
+    
+    
+    else:
+        form=AuthenticationForm()
+        return render (request,"login.html", {"form": form})

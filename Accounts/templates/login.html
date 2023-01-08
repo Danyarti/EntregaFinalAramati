@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block container %}
+<h1> LOGIN </h1>
+
+<form action="{%url 'login' %}" method="POST"> {% csrf_token %}
+
+<table>
+    {{ form.as_table }}
+</table>
+<p> <input type="submit" value="REGISTRAR"> </p>
+</form>
+
+{{ mensaje }}
+
+{% endblock  %}
+
+
