@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block container %}
+
+<h1>Editar Perfil de: {{ nombreusuario }}</h1>
+
+<div class= "{% static 'form-group' %}">
+    <form action="{% url 'singEditForm' %}" method="POST">  {% csrf_token %}
+
+
+        <table>
+        {{ form.as_table }}
+        </table>
+            <p> </p>
+            <p> <input type="submit" value="MODIFICAR USUARIO"> </p>
+    </form>    
+</div>
+
+{% endblock %}

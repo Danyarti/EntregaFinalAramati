@@ -7,14 +7,17 @@
 <h1>ESCRIBA UNA SINOPSIS SOBRE LA PELICULA O SERIE</h1>
 
 <div class= "{% static 'form-group' %}">
-    <form action="{% url 'blogForm' %}" method="POST">  {% csrf_token %}
+    <form action="{% url 'blogForm' %}" method="POST" enctype="multipart/form-data" style="color: black;">  {% csrf_token %}
 
 
         <table>
-        {{ form.as_table }}
+            {{ form.media|safe }}
+            {{ form.as_table |safe }}
+            
+        
         </table>
             <p> </p>
-            <p> <input type="submit" value="REGISTRO"> </p>
+            <p> <input type="submit" value="REGISTRO" style=" width:150px;"> </p>
     </form>    
 </div>
 

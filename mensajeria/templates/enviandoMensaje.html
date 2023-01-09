@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block container %}
+<h1>Mensajes enviados</h1>
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <hr class="my-4" /> 
+            <div class="post-preview"> 
+                <table >
+                    <tr>
+                        <th style="border: 1px solid #000; width: 25%; padding: 0.3em;">Para:       </th>
+                        <th style="border: 1px solid #000; width: 25%; padding: 0.3em;">Mensajes:   </th>
+                        <th style="border: 1px solid #000; width: 25%; padding: 0.3em;">hora        </th>
+                        <th style="border: 1px solid #000; width: 25%; padding: 0.3em;">leido       </th>
+                    </tr>
+                    {% for indice in mensajes %}
+                    <tr>
+                        <td style="text-align: center; border: 1px solid #000; width: 25%; border-spacing: 0; padding: 0.3em;">{{ indice.recibir }}</td>
+                        <td style="text-align: center; border: 1px solid #000; width: 25%; border-spacing: 0; padding: 0.3em;">{{ indice.mensaje }}</td>
+                        <td style="text-align: center; border: 1px solid #000; width: 25%; border-spacing: 0; padding: 0.3em;">{{ indice.a_quehora }}</td>
+                        <td style="text-align: center; border: 1px solid #000; width: 25%; border-spacing: 0; padding: 0.3em;">{{ indice.leido }}</td>
+                    </tr>  
+
+{% endblock  %}
+
+{% block message %}
+
+{% endblock  %}
+
