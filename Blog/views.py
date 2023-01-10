@@ -11,6 +11,9 @@ from Accounts.views import getAvatar
 def index (request):
     return render (request, "index.html", {"imagen":getAvatar(request)})
 
+def nosotros (request):
+    return render (request, "nosotros.html", {"imagen":getAvatar(request)})
+
 @login_required
 def blogForm (request):
     if request.method=="POST":

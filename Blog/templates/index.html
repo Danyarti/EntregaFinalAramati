@@ -81,12 +81,9 @@
                           <a class="nav-link dropdown-toggle" href="{% url 'allBlogs' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            Inicio
                           </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="{% url 'allBlogs' %}">Home 1</a>
-                              <a class="dropdown-item" href="{% static 'index-5.html' %}">Home 5</a>                             
-                          </div>
+                          
                       </li>
-					  <li class="nav-item"><a href="{% static 'index-5.html' %}" class="nav-link">Nosotros</a></li>
+					  <li class="nav-item"><a href="{% url 'nosotros' %}" class="nav-link">Nosotros</a></li>
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            RESEÑAS
@@ -99,16 +96,15 @@
                             
                           </div>
                       </li>
-
-                      
-					
-					  
-                          <li class="nav-item dropdown">
+                   				
+					      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            Mensajeria
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                            <a class="dropdown-item" href="{% url 'mensajeUsuarios' %}">Mensajes</a>
+                            <a class="dropdown-item" href="{% url 'mensajeUsuarios' %}">Enviar Mensajes</a>
+                            <a class="dropdown-item" href="{% url 'mensajeUsuarios' %}">Mensajes Recibidos</a>
+                            <a class="dropdown-item" href="{% url 'mensajeUsuarios' %}">Historial de Mensajes</a>
 
                           </div>
                       </li>

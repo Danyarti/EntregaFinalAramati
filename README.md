@@ -1,5 +1,5 @@
 Nombre del Proyecto: Digital TV
-Realizado por Dany Aramati Tinoco
+Realizado por: Dany Aramati Tinoco
 
 ***********************************************************************
 Descripcion:
