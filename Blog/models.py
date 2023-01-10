@@ -11,7 +11,7 @@ class Blog(models.Model):
     pais_origen = models.CharField (max_length=100)
     imagen = models.ImageField(upload_to='media', height_field=None, width_field=None, max_length=None, blank=True)
     sinopsis = RichTextUploadingField()
-
+    autor = models.CharField(max_length=100)
     def __str__(self) -> str:
         return self.titulo + " " + self.director
 

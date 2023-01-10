@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block header %}
+
+<section class="{% static 'call-to-action-box no-padding' %}">
+    <div class="{% static 'banner-carousel banner-carousel-1 mb-0' %}">
+      <div class="banner-carousel-item" style="background-image:url({% static 'images/slider-main/allblogs.jpg' %})">
+        <div class="slider-content">
+            <div class="container">
+              <div class="row align-items-center h-100">
+                  <div class="col-md-12 text-center">
+                    <h2 class="slide-title" data-animation-in="slideInLeft">Reseñas creadas por los Usuarios</h2>
+                    <h3 class="slide-sub-title" data-animation-in="slideInRight">Digital TV</h3>
+                    
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock  %}
+
+
+{% block container %}
+
+{% if blogs %}  <!-- IF--> 
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            {% for blog in blogs %}     <!-- FOR Post dinamico-->  
+                <hr class="my-4" /> 
+                <div class="post-preview"> 
+                    <a href="{% url 'blogPost' blog.id %}">
+                        <h2 class="post-title">{{ blog.titulo }}</h2>
+                        <h4 class="post-subtitle">{{ blog.director }}</h3>
+                    </a>
+                    <p class="post-meta">
+                        Publicado por {{ blog.autor }}
+                        
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}  <!-- ELSE IF--> 
+<div class="container px-4 px-lg-5">
+<div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+        <br>
+        <H2>No hay entradas en el blog aun. </H2>
+    </div>
+</div>
+</div>        
+{% endif %}
+
+{% endblock  %}
+
+{% block message %}
+
+{% endblock  %}
+

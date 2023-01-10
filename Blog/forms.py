@@ -8,7 +8,7 @@ class DateTimeInput(forms.DateTimeInput):
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields = ['titulo','director','fecha_publicacion','pais_origen','imagen', 'sinopsis']
+        fields = ['titulo','director','fecha_publicacion','pais_origen','imagen', 'sinopsis', 'autor']
 widgets = {
             
             'fecha_publicacion': DateTimeInput(attrs={'class': 'form-control'}),

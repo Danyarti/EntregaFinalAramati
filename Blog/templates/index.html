@@ -38,7 +38,7 @@
 
 			
 			<div class="col-lg-2 col-md-4 text-center d-none d-lg-block">
-					<a class="navbar-brand " href="{% static 'index.html' %}">
+					<a class="navbar-brand " href="{% url 'allBlogs' %}">
 						<img src="{% static 'images/logo.png' %}" alt="" class="img-fluid">
 					</a>
 			</div>
@@ -62,7 +62,7 @@
 <header class="header-top bg-grey justify-content-center">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-2 col-md-4 text-center d-none d-lg-block">
+      <div class="col-lg-2 col-md-4 text-center d-none d-lg-block"> 
           <a class="navbar-brand " href="{% static 'index.html' %}"></a>
       </div>
 
@@ -78,25 +78,29 @@
               <div class="collapse navbar-collapse" id="navbar-collapse">
                   <ul id="menu" class="menu navbar-nav mx-auto">
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="{% static 'index.html' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Home
+                          <a class="nav-link dropdown-toggle" href="{% url 'allBlogs' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Inicio
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="{% static 'index.html' %}">Home 1</a>
+                              <a class="dropdown-item" href="{% url 'allBlogs' %}">Home 1</a>
                               <a class="dropdown-item" href="{% static 'index-5.html' %}">Home 5</a>                             
                           </div>
                       </li>
+					  <li class="nav-item"><a href="{% static 'index-5.html' %}" class="nav-link">Nosotros</a></li>
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            RESEÑAS
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+							<a class="dropdown-item" href="{% url 'allBlogs' %}">Ver Reseñas</a>
+                            <a class="dropdown-item" href="{% url 'userPosts' %}">Ver Tus Reseña</a>
                             <a class="dropdown-item" href="{% url 'blogForm' %}">Nueva Reseña</a>
+                           
                             
                           </div>
                       </li>
 
-                      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                      
 					
 					  
                           <li class="nav-item dropdown">
@@ -104,7 +108,7 @@
                            Mensajeria
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                            <a class="dropdown-item" href="{% static 'mensajeUsuarios.html' %}">Mensajes</a>
+                            <a class="dropdown-item" href="{% url 'mensajeUsuarios' %}">Mensajes</a>
 
                           </div>
                       </li>
@@ -120,9 +124,90 @@
     </div>
   </div>
 </header>
+{% block header %}
+
+{% endblock %}
 
 {% block container %} 
 
+<div class="header-top bg-blue justify-content-center">
+	<div class="container px-4 px-lg-5">
+	<div class="row gx-4 gx-lg-5 justify-content-center">
+		<div class="col-md-10 col-lg-8 col-xl-7">
+			<!-- Post 1 preview-->
+			<br>
+			<div class="post-preview">
+				{% if blog_1 %}
+				<a href="{% url 'blogPost' blog_1.id %}">
+					<h2 class="post-title">{{ blog_1.titulo }}</h2>
+					<h4 class="post-subtitle">{{ blog_1.director }}</h4>
+				</a>
+				<p class="post-meta">
+					Publicado por {{ blog_1.username }}
+					
+				</p>
+				{% else %}
+				<h2 class="post-title">Aún no hay reseñas para mostrar</h2>
+				{% endif %}
+			</div>
+			<!-- Divider-->
+			<hr class="my-4" />
+			<!-- Post 2 preview-->
+			<div class="post-preview ">
+				{% if blog_2 %}
+				<a href="{% url 'blogPost' blog_2.id %}">
+					<h2 class="post-title">{{ blog_2.titulo }}</h2>
+					<h4 class="post-subtitle">{{ blog_2.director }}</h4>
+				</a>
+				<p class="post-meta">
+					Publicado por {{ blog_2.autor }}
+					
+				</p>
+				{% else %}
+				<h2 class="post-title">Aún no hay entradas para mostrar</h2>
+				{% endif %}
+			</div>
+			<!-- Divider-->
+			<hr class="my-4" />
+			<!-- Post 3 preview-->
+			<div class="post-preview">
+				{% if blog_3 %}
+				<a href="{% url 'blogPost' blog_3.id %}">
+					<h2 class="post-title">{{ blog_3.titulo }}</h2>
+					<h4 class="post-subtitle">{{ blog_3.director }}</h4>
+				</a>
+				<p class="post-meta">
+					Publicado por {{ blog_3.autor }}
+					
+				</p>
+				{% else %}
+				<h2 class="post-title">Aún no hay entradas para mostrar</h2>
+				{% endif %}
+			</div>
+			<!-- Divider-->
+			<hr class="my-4" />
+			<!-- Post 4 preview-->
+			<div class="post-preview">
+				{% if blog_4 %}
+				<a href="{% url 'blogPost' blog_4.id %}">
+					<h2 class="post-title">{{ blog_4.titulo }}</h2>
+					<h4 class="post-subtitle">{{ blog_4.autor }}</h4>
+				</a>
+				<p class="post-meta">
+					Publicado por {{ blog_4.autor }}
+					
+				</p>
+				{% else %}
+				<h2 class="post-title">Aún no hay entradas para mostrar</h2>
+				{% endif %}
+			</div>
+			<!-- Divider-->
+			<hr class="my-4" />
+			<!-- Pager-->
+			<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'allBlogs' %}">Ver todas →</a></div>
+		</div>
+	</div>
+  </div>
 
 {% endblock  %}
 <section class="slider mt-4">

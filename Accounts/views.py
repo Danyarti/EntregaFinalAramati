@@ -62,6 +62,7 @@ def editProfile(request):
         return render(request, "singEditForm.html", {"form":form, "nombreusuario":usuario.username, "imagen":getAvatar(request)})
 
 def getAvatar(request):
+   if request.user.is_authenticated: 
     lista=userAvatar.objects.filter(user=request.user)
     if len(lista)!=0:
         imagen=lista[0].imagen.url
@@ -85,3 +86,8 @@ def addAvatar(request):
     else:
         form=AvatarForm()
         return render(request , "addAvatar.html", {"form": form, "usuario": request.user, "imagen":getAvatar(request)})
+
+@ login_required
+def userLogout(request):
+    logout(request)
+    return render(request, "logoutsuccesful.html", {"message": "Ha cerrado sesion exitosamente!", "imagen": getAvatar(request)})

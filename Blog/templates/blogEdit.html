@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block header %}
+
+<header class="masthead" style="background-image:url({% static 'images/slider-main/editblog.jpg' %})">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1 style="color: white; text-align: center;">{{ mensaje_publicacion }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% endblock  %}
+
+{% block container %}
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <hr class="my-4" /> 
+            <div class="post-preview">
+                <form action="{% url 'editBlog' blog_edit.id %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                    <table>
+                        {{ form_post  }}
+                        {{ form_post.media }}
+                    </table>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block" value="Editar post">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>  
+</div>   
+
+{% endblock  %}
+
+{% block message %}
+
+{% endblock  %}
+
