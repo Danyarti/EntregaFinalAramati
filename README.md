@@ -1,6 +1,8 @@
 Nombre del Proyecto: Digital TV
 Realizado por: Dany Aramati Tinoco
 
+Link del Video de la entrega del proyecto: https://drive.google.com/file/d/1h4fR0iiyGtumMdBX-3s-AAkJF800xZJR/view?usp=sharing
+
 ***********************************************************************
 Descripcion:
 Consiste en una pagina tipo Blog donde se pueden realizar reseñas de peliculas y series, asi como ver los post ya creados por usuarios y tiene la posibilidad de realizar envio y recepcion de Mensajes entre los usuarios.
@@ -23,3 +25,5 @@ Estructura:
     1.4 Mensajeria
         1.4.1 Mensajes: Despliega pantalla con 3 botones para ver los mensajes recibidos, el historial de mensajes enviados y enviar mensaje   
                         nuevo
+
+
